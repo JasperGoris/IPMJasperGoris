@@ -18,6 +18,7 @@ public class TaskServiceTest {
     @Autowired
     private TaskService taskService;
 
+
     @Test
     public void testGetTasks(){
         TaskDto taskDto = new TaskDto();
@@ -40,7 +41,9 @@ public class TaskServiceTest {
         assertEquals(task.getTijdstip(), "18:00");
         assertEquals(task.getName(), "Bibliotheek");
         assertEquals(task.getDescription(), "Boeken binnen brengen");
+
     }
+
 
     @Test
     public void checkSubTasks() {
@@ -52,6 +55,8 @@ public class TaskServiceTest {
         taskService.addTask(taskDto);
 
 
+
+
         SubTask subTask = new SubTask();
         subTask.setCorrespondingTask((long) 1);
         subTask.setDatum("28/03/2020");
@@ -61,6 +66,9 @@ public class TaskServiceTest {
 
         Task d = taskService.getTaken().get(0);
         d.addSubTask(subTask);
+
+        SubTask Nul = null;
+        assertThrows(IllegalArgumentException.class, () -> d.addSubTask(Nul));
 
 
         assertEquals(subTask.getCorrespondingTask(), 1);
