@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~IPMJasperGoris
     docker:
-      - image: circleci/openjdk:8-jdk-stretch
+      - image: circleci/openjdk
     steps:
       - checkout
       - run : mvn verify
