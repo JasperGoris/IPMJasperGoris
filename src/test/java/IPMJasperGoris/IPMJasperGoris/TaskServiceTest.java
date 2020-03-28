@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.transaction.Transactional;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -19,6 +21,22 @@ public class TaskServiceTest {
     private TaskService taskService;
 
 
+    @Test
+    @Transactional
+    public void hibernateShit(){
+        TaskDto taskDto = new TaskDto();
+        taskDto.setName("Bibliotheek");
+        taskDto.setDescription("Boeken binnen brengen");
+        taskDto.setDatum("28/03/2020");
+        taskDto.setTijdstip("18:00");
+        taskService.addTask(taskDto);
+
+        List<Task> tasks = taskService.getTaken();
+        Task task = tasks.get(0);
+
+        assertEquals(taskService.getTask((long) 1), task);
+
+    }
     @Test
     public void testGetTasks(){
         TaskDto taskDto = new TaskDto();
@@ -41,6 +59,8 @@ public class TaskServiceTest {
         assertEquals(task.getTijdstip(), "18:00");
         assertEquals(task.getName(), "Bibliotheek");
         assertEquals(task.getDescription(), "Boeken binnen brengen");
+
+
 
     }
 

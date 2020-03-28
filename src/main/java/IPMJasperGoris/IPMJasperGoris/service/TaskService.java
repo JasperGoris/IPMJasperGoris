@@ -41,10 +41,6 @@ public class TaskService {
         repo.flush();
     }
 
-    public void removetask(Task task){
-        repo.delete(task);
-    }
-
     public Task getTask(Long id){
         return repo.getOne(id);
     }
