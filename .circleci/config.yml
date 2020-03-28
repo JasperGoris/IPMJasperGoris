@@ -1,7 +1,6 @@
 version: 2.0
 jobs:
   build:
-    working_directory: ~IPMJasperGoris
     docker:
       - image: circleci/openjdk:11.0-stretch-node-browsers-legacy
     steps:
