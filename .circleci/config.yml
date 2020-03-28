@@ -6,7 +6,7 @@ jobs:
     steps:
       - checkout
       - run : mvn verify
-      - store_test_results:
-          path:  target/site/jacoco/index.html
       - store_artifacts:
           path: target/site/jacoco/index.html
+      - store_artifacts:
+          path: target/site/jacoco/jacoco-resources
