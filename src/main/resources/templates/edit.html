@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="Stylesheet" type="text/css" href="/style.css">
+
+    <title>tasks</title>
+</head>
+<body>
+
+<header class="header">
+    <ul>
+        <li><a href="#" th:href="@{/tasks/}">Home</a></li>
+        <li><a href="#" th:href="@{/tasks/new}">New Task</a></li>
+    </ul>
+</header>
+
+<form class="form" method="post" th:action="@{|/tasks/edit/${task.id}|}">
+    <h4>Edit task</h4>
+    <div>
+        <label for="name">Name: </label>
+        <input type="text" id="name" name="name" th:value="${task.name}">
+    </div>
+    <div>
+        <label for="description">Description: </label>
+        <input type="text" name="description"  th:value="${task.description}"  id="description">
+    </div>
+    <div>
+        <label for="tijdstip">Tijdstip: </label>
+        <input type="String" name="tijdstip" th:value="${task.tijdstip}"  id="tijdstip">
+    </div>
+    <div>
+        <label for="datum">Datum: </label>
+        <input type="String" name="datum"  th:value="${task.datum}" id="datum">
+    </div>
+    <div style="display: none">
+        <label for="id">id: </label>
+        <input type="number" name="id"  id="id" th:value="${task.id}">
+    </div>
+    <input class="myButton" type="submit" value="Add task">
+</form>
+
+</body>
+</html>

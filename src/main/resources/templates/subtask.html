@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="Stylesheet" type="text/css" href="/style.css">
+
+</head>
+<body>
+
+<header class="header">
+    <ul>
+        <li><a href="#" th:href="@{/tasks/}">Home</a></li>
+        <li><a href="#" th:href="@{/tasks/new}">New Task</a></li>
+    </ul>
+</header>
+
+<form class="form" method="post" th:action="@{|/tasks/${task.id}/sub/create|}">
+    <h4>Create subtask</h4>
+    <div>
+        <label for="name">Name: </label>
+        <input type="text" id="name" name="name">
+    </div>
+    <div>
+        <label for="description">Description: </label>
+        <input type="text" name="description"  id="description">
+    </div>
+    <div>
+        <label for="tijdstip">Tijdstip: </label>
+        <input type="String" name="tijdstip"  id="tijdstip">
+    </div>
+    <div>
+        <label for="datum">Datum: </label>
+        <input type="String" name="datum"  id="datum">
+    </div>
+    <div style="display: none">
+        <label for="correspondingTask">id: </label>
+        <input type="number" name="correspondingTask"  id="correspondingTask" th:value="*{id}">
+    </div>
+    <input class="myButton" type="submit" value="Add subtask">
+</form>
+
+</body>
+</html>

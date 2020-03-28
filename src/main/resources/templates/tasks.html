@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>tasks</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+
+</head>
+<body>
+
+<header class="header">
+    <ul>
+        <li><a href="#" th:href="@{/tasks/}">Home</a></li>
+        <li><a href="#" th:href="@{/tasks/new}">New Task</a></li>
+    </ul>
+</header>
+
+<h1> Tasks</h1>
+<p th:if="${tasks == null or tasks.empty}"> No tasks Left to do </p>
+
+<table class="purpleHorizon" th:if="${tasks != null and !tasks.empty}">
+        <tr th:each="task : ${tasks}">
+            <td th:text="${task.id} + ' ' + ${task.name} + ' due: ' "></td>
+            <td th:text="${task.datum}"></td>
+            <td th:text="${task.tijdstip}"></td>
+            <td> <a class="myButton" th:href="@{/tasks/} + ${task.id}" th:text="'Details'"></a></td>
+            <td> <a class="myButton" th:href="@{/tasks/edit/} + ${task.id}" th:text="'Edit'"></a></td>
+
+        </tr>
+    </table>
+
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="Stylesheet" type="text/css" href="/style.css">
+
+    <title>tasks</title>
+</head>
+<body>
+
+<header class="header">
+    <ul>
+        <li><a href="#" th:href="@{/tasks/}">Home</a></li>
+        <li><a href="#" th:href="@{/tasks/new}">New Task</a></li>
+    </ul>
+</header>
+
+<h1>Task detail</h1>
+
+<p th:if="${id == null}"> Task not found </p>
+
+<div th:if="${id != null}">
+    <p th:text="'Title:              ' + ${id.name}"></p>
+    <p th:text="'Description:        ' + ${id.description}"></p>
+    <p th:text="'Due date:           ' + ${id.tijdstip}"></p>
+
+    <p> <a class="myButton" th:href="@{|/tasks/${id.id}/sub/create|}" th:text="'Create Subtask'"></a></p>
+
+</div>
+
+<h4> Subtasks </h4>
+<p th:if="${id.subTasks.empty}"> No current subtasks </p>
+
+<table class="purpleHorizon" th:if="${id.subTasks != null and !id.subTasks.empty}">
+    <tr th:each="subtask : ${id.subTasks}">
+        <td th:text="${subtask.subId - 1} + '    ' + ${subtask.name} + ' due: ' "></td>
+        <td th:text="${subtask.datum}"></td>
+        <td th:text="${subtask.tijdstip}"></td>
+    </tr>
+</table>
+
+</body>
+</html>
