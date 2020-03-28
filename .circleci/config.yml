@@ -9,4 +9,4 @@ jobs:
       - store_test_results:
           path:  target/site/jacoco/index.html
       - store_artifacts:
-          path: target?
+          path: target/site/jacoco/index.html
