@@ -60,6 +60,23 @@ public class TaskServiceTest {
         assertEquals(task.getName(), "Bibliotheek");
         assertEquals(task.getDescription(), "Boeken binnen brengen");
     }
+    @Test
+    public void DtoTests(){
+        TaskDto taskDto = new TaskDto();
+        taskDto.setName("Bibliotheek");
+        taskDto.setDescription("Boeken binnen brengen");
+        taskDto.setDatum("28/03/2020");
+        taskDto.setTijdstip("18:00");
+        taskService.addTask(taskDto);
+
+        List<Task> tasks = taskService.getTaken();
+        Task task = tasks.get(0);
+        assertEquals(taskDto.getDatum(), task.getDatum());
+        assertEquals(taskDto.getDescription(), task.getDescription());
+        assertEquals(taskDto.getName(), task.getName());
+        assertEquals(taskDto.getTijdstip(), task.getTijdstip());
+
+    }
 
     @Transactional
     @Test

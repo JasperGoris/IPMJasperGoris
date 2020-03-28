@@ -55,10 +55,6 @@ public class TaskDto {
         this.datum = datum;
     }
 
-    public Long getId() {
-        return id;
-    }
-
     public String getName() {
         return name;
     }
@@ -75,8 +71,4 @@ public class TaskDto {
         return datum;
     }
 
-
-    public void addSubTask(SubTask subTask){
-        subTasks.add(subTask);
-    }
 }
