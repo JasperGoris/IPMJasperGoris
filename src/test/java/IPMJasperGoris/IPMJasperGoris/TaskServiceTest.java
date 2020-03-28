@@ -34,6 +34,12 @@ public class TaskServiceTest {
         assertEquals(1, tasks.size());
         Task task = tasks.get(0);
         assertNotNull(task);
+
+        assertEquals(task.getId(), 1);
+        assertEquals(task.getDatum(), "28/03/2020");
+        assertEquals(task.getTijdstip(), "18:00");
+        assertEquals(task.getName(), "Bibliotheek");
+        assertEquals(task.getDescription(), "Boeken binnen brengen");
     }
 
     @Test
@@ -51,10 +57,17 @@ public class TaskServiceTest {
         subTask.setDatum("28/03/2020");
         subTask.setDescription("Boete eerst betalen");
         subTask.setName("Boete");
-        subTask.setTijdstip("18u05");
+        subTask.setTijdstip("18:05");
 
         Task d = taskService.getTaken().get(0);
         d.addSubTask(subTask);
+
+
+        assertEquals(subTask.getCorrespondingTask(), 1);
+        assertEquals(subTask.getDatum(), "28/03/2020");
+        assertEquals(subTask.getTijdstip(), "18:05");
+        assertEquals(subTask.getName(), "Boete");
+        assertEquals(subTask.getDescription(), "Boete eerst betalen");
 
         List<SubTask> subtasks = d.getSubTasks();
         assertNotNull(subtasks);
