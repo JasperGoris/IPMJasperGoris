@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~IPMJasperGoris
     docker:
-      - image: circleci/openjdk
+      - image: circleci/openjdk:11.0-stretch-node-browsers-legacy
     steps:
       - checkout
       - run : mvn verify
