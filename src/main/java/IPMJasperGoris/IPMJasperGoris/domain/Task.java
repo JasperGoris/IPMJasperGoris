@@ -19,7 +19,8 @@ public class Task  {
     private String tijdstip;
     @NotEmpty
     private String datum;
-    @OneToMany (cascade = {CascadeType.ALL})
+    @OneToMany (cascade = {CascadeType.ALL}, fetch = FetchType.EAGER
+    )
     private List<SubTask> subTasks = new ArrayList<>();
 
 
