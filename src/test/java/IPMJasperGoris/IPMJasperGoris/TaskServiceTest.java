@@ -3,8 +3,7 @@ package IPMJasperGoris.IPMJasperGoris;
 import IPMJasperGoris.IPMJasperGoris.domain.SubTask;
 import IPMJasperGoris.IPMJasperGoris.domain.Task;
 import IPMJasperGoris.IPMJasperGoris.dto.TaskDto;
-import IPMJasperGoris.IPMJasperGoris.service.TaskService;
-import org.hibernate.Hibernate;
+import IPMJasperGoris.IPMJasperGoris.service.TaskServiceImplementation;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,7 +17,7 @@ import java.util.List;
 @SpringBootTest
 public class TaskServiceTest {
     @Autowired
-    private TaskService taskService;
+    private TaskServiceImplementation taskServiceImplementation;
 
 
     @Test
@@ -29,12 +28,12 @@ public class TaskServiceTest {
         taskDto.setDescription("Boeken binnen brengen");
         taskDto.setDatum("28/03/2020");
         taskDto.setTijdstip("18:00");
-        taskService.addTask(taskDto);
+        taskServiceImplementation.addTask(taskDto);
 
-        List<Task> tasks = taskService.getTaken();
+        List<Task> tasks = taskServiceImplementation.getTaken();
         Task task = tasks.get(0);
 
-        assertEquals(taskService.getTask((long) 1), task);
+        assertEquals(taskServiceImplementation.getTask((long) 1), task);
 
     }
     @Test
@@ -44,9 +43,9 @@ public class TaskServiceTest {
         taskDto.setDescription("Boeken binnen brengen");
         taskDto.setDatum("28/03/2020");
         taskDto.setTijdstip("18:00");
-        taskService.addTask(taskDto);
+        taskServiceImplementation.addTask(taskDto);
 
-        List<Task> tasks = taskService.getTaken();
+        List<Task> tasks = taskServiceImplementation.getTaken();
 
         assertNotNull(tasks);
         assertFalse(tasks.isEmpty());
@@ -67,9 +66,9 @@ public class TaskServiceTest {
         taskDto.setDescription("Boeken binnen brengen");
         taskDto.setDatum("28/03/2020");
         taskDto.setTijdstip("18:00");
-        taskService.addTask(taskDto);
+        taskServiceImplementation.addTask(taskDto);
 
-        List<Task> tasks = taskService.getTaken();
+        List<Task> tasks = taskServiceImplementation.getTaken();
         Task task = tasks.get(0);
         assertEquals(taskDto.getDatum(), task.getDatum());
         assertEquals(taskDto.getDescription(), task.getDescription());
@@ -86,19 +85,19 @@ public class TaskServiceTest {
         taskDto.setDescription("Boeken binnen brengen");
         taskDto.setDatum("28/03/2020");
         taskDto.setTijdstip("18:00");
-        taskService.addTask(taskDto);
+        taskServiceImplementation.addTask(taskDto);
 
         TaskDto taskDto1 = taskDto;
-        taskService.addTask(taskDto1);
+        taskServiceImplementation.addTask(taskDto1);
 
-        List<Task> tasks = taskService.getTaken();
+        List<Task> tasks = taskServiceImplementation.getTaken();
         Task task = tasks.get(0);
         Task task2 = tasks.get(1);
 
         task.setDescription("Test");
-        taskService.editTask(task);
+        taskServiceImplementation.editTask(task);
 
-        List<Task> taken = taskService.getTaken();
+        List<Task> taken = taskServiceImplementation.getTaken();
         Task task3 = taken.get(0);
         Task task4 = taken.get(1);
         assertNotEquals(task3, task4);
@@ -112,7 +111,7 @@ public class TaskServiceTest {
         taskDto.setDescription("Boeken binnen brengen");
         taskDto.setDatum("28/03/2020");
         taskDto.setTijdstip("18:00");
-        taskService.addTask(taskDto);
+        taskServiceImplementation.addTask(taskDto);
 
 
 
@@ -124,7 +123,7 @@ public class TaskServiceTest {
         subTask.setName("Boete");
         subTask.setTijdstip("18:05");
 
-        Task d = taskService.getTaken().get(0);
+        Task d = taskServiceImplementation.getTaken().get(0);
         d.addSubTask(subTask);
 
         SubTask Nul = null;

@@ -3,7 +3,7 @@ package IPMJasperGoris.IPMJasperGoris.rest.controller;
 import IPMJasperGoris.IPMJasperGoris.domain.SubTask;
 import IPMJasperGoris.IPMJasperGoris.domain.Task;
 import IPMJasperGoris.IPMJasperGoris.dto.TaskDto;
-import IPMJasperGoris.IPMJasperGoris.service.TaskService;
+import IPMJasperGoris.IPMJasperGoris.service.TaskServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,10 +15,10 @@ import javax.validation.Valid;
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping("/tasks1")
 public class RestController {
-    private final TaskService service;
+    private final TaskServiceImplementation service;
 
     @Autowired
-    public RestController(TaskService service) {
+    public RestController(TaskServiceImplementation service) {
         this.service = service;
     }
 
