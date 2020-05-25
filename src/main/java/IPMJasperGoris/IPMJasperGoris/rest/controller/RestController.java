@@ -11,8 +11,17 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+/*
+  ______________________________________________________________________________________________________
+* | uitgewerkt als oefening. werkt ook indien comments verwijderd worden.                               \
+* | wel niet beveiligd via security (dus /tasks1 is bereikbaar door iedereen)                           \
+* |                                                                                                     \
+* |                                                                                                     \
+* |                                                                                                     \
+* |_____________________________________________________________________________________________________\
 
 @org.springframework.web.bind.annotation.RestController
+
 @RequestMapping("/tasks1")
 public class RestController {
     private final TaskServiceImplementation service;
@@ -77,3 +86,4 @@ public class RestController {
         return "redirect:/tasks";
     }
 }
+*/

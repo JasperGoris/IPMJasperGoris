@@ -1,0 +1,15 @@
+<header class="header">
+    <ul>
+        <li><a href="http://localhost:8080?lang=en" th:text="#{lang.eng}"></a> </li>
+        <li><a href="http://localhost:8080?lang=nl" th:text="#{lang.nl}"></a> </li>
+
+    </ul>
+    <ul>
+        <li><a href="#" th:href="@{/login}" th:text="#{home}"></a></li>
+        <li sec:authorize="!isAuthenticated()"><a href="#"  th:href="@{/signup}" th:text="#{signup}"></a></li>
+
+        <li sec:authorize-url="/tasks/"><a href="#" th:href="@{/logout}" th:text="#{logout}"></a></li>
+        <li sec:authorize-url="/tasks/"><a href="#" th:href="@{/tasks/}" th:text="#{overview}"></a></li>
+        <li sec:authorize-url="/tasks/new"><a href="#"  th:href="@{/tasks/new}" th:text="#{newTask}"></a></li>
+    </ul>
+</header>
