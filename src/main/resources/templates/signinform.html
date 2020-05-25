@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{home}"></title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+
+</head>
+<body>
+
+<div th:include="header.html"></div>
+
+<h1 th:text="#{greeting}"></h1>
+<p th:text="#{greetingmessage}"> </p>
+
+<div sec:authorize="!isAuthenticated()">
+<h1 th:text="#{signin}"></h1>
+<p th:if="${param.error}" th:text="#{invalid}"></p>
+<form th:method="post" th:action="@{/login}">
+    <div>
+        <label for="username" th:text="#{usernames}"></label>
+        <input type="text" id="username" name="username">
+    </div>
+    <br>
+    <div>
+        <label for="password" th:text="#{passwords}"></label>
+        <input type="password" id="password" name="password">
+    </div>
+    <br>
+    <input type="submit" value="Sign in">
+</form>
+</div>
+
+</body>
+</html>

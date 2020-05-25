@@ -1,0 +1,12 @@
+version: 2.0
+jobs:
+  build:
+    docker:
+      - image: circleci/openjdk:11.0-stretch-node-browsers-legacy
+    steps:
+      - checkout
+      - run : mvn verify
+      - store_artifacts:
+          path: target/site/jacoco/index.html
+      - store_artifacts:
+          path: target/site/jacoco/jacoco-resources

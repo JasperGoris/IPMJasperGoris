@@ -2,11 +2,11 @@ package IPMJasperGoris.IPMJasperGoris.controller;
 
 import IPMJasperGoris.IPMJasperGoris.domain.SubTask;
 import IPMJasperGoris.IPMJasperGoris.domain.Task;
+
 import IPMJasperGoris.IPMJasperGoris.dto.TaskDto;
-import IPMJasperGoris.IPMJasperGoris.service.TaskService;
+import IPMJasperGoris.IPMJasperGoris.service.TaskServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,16 +15,16 @@ import javax.validation.Valid;
 
 @org.springframework.stereotype.Controller
 @RequestMapping("/tasks")
-public class Controller {
+public class TaskController {
 
-    private final TaskService service;
+    private final TaskServiceImplementation service;
 
     @Autowired
-    public Controller(TaskService service) {
+    public TaskController(TaskServiceImplementation service) {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping()
     public String getTasks(Model model){
         model.addAttribute("tasks", service.getTaken());
         return "tasks";

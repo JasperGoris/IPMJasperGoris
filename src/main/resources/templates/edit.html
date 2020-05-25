@@ -1,43 +1,42 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <link rel="Stylesheet" type="text/css" href="/style.css">
 
-    <title>tasks</title>
+    <title th:text="#{edit}"></title>
 </head>
 <body>
 
-<header class="header">
-    <ul>
-        <li><a href="#" th:href="@{/tasks/}">Home</a></li>
-        <li><a href="#" th:href="@{/tasks/new}">New Task</a></li>
-    </ul>
-</header>
+<div th:include="header.html"></div>
+
 
 <form class="form" method="post" th:action="@{|/tasks/edit/${task.id}|}">
-    <h4>Edit task</h4>
+    <h4 th:text="#{editTask}"></h4>
     <div>
-        <label for="name">Name: </label>
+        <label for="name" th:text="#{names}"></label>
         <input type="text" id="name" name="name" th:value="${task.name}">
     </div>
     <div>
-        <label for="description">Description: </label>
+        <label for="description" th:text="#{description}"></label>
         <input type="text" name="description"  th:value="${task.description}"  id="description">
     </div>
     <div>
-        <label for="tijdstip">Tijdstip: </label>
+        <label for="tijdstip" th:text="#{time}"></label>
         <input type="String" name="tijdstip" th:value="${task.tijdstip}"  id="tijdstip">
     </div>
     <div>
-        <label for="datum">Datum: </label>
+        <label for="datum" th:text="#{date}"></label>
         <input type="String" name="datum"  th:value="${task.datum}" id="datum">
     </div>
     <div style="display: none">
-        <label for="id">id: </label>
+        <label for="id" th:text="#{ids}"></label>
         <input type="number" name="id"  id="id" th:value="${task.id}">
     </div>
-    <input class="myButton" type="submit" value="Add task">
+
+    <input type="hidden" th:attr="name=${_csrf.parameterName},value=${_csrf.token}"/>
+
+    <input class="myButton" type="submit" th:value="#{submit}">
 </form>
 
 </body>

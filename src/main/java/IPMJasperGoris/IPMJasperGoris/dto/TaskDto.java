@@ -4,6 +4,8 @@ import IPMJasperGoris.IPMJasperGoris.domain.SubTask;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,10 +13,17 @@ public class TaskDto {
     @Id
     @GeneratedValue
     private Long id;
+    @NotEmpty
+    @Size(min = 3)
     private String name;
+    @NotEmpty
+    @Size(min = 3)
     private String description;
+    @NotEmpty
     private String tijdstip;
+    @NotEmpty
     private String datum;
+
     private List<SubTask> subTasks;
 
 
@@ -46,10 +55,6 @@ public class TaskDto {
         this.datum = datum;
     }
 
-    public Long getId() {
-        return id;
-    }
-
     public String getName() {
         return name;
     }
@@ -66,8 +71,4 @@ public class TaskDto {
         return datum;
     }
 
-
-    public void addSubTask(SubTask subTask){
-        subTasks.add(subTask);
-    }
 }
